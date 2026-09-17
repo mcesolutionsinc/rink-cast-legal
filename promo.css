@@ -381,21 +381,24 @@ h1 .accent { color: var(--accent); }
   0% { opacity: 0 }
   83.333% { opacity: 0 }
   85.0% { opacity: 1 }
-  100% { opacity: 1 }
+  97.5% { opacity: 1 }
+  100% { opacity: 0 }
 }
 
 @keyframes reel-caption-5 {
   0% { opacity: 0; transform: translateY(10px) }
   83.333% { opacity: 0; transform: translateY(10px) }
   85.0% { opacity: 1; transform: translateY(0) }
-  100% { opacity: 1; transform: translateY(0) }
+  97.5% { opacity: 1; transform: translateY(0) }
+  100% { opacity: 0; transform: translateY(-6px) }
 }
 
 @keyframes reel-pip-5 {
   0% { width: 8px; background: var(--border) }
   83.333% { width: 8px; background: var(--border) }
   85.0% { width: 24px; background: var(--accent) }
-  100% { width: 24px; background: var(--accent) }
+  97.5% { width: 24px; background: var(--accent) }
+  100% { width: 8px; background: var(--border) }
 }
 
 @keyframes reel-scroll {
