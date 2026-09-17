@@ -67,8 +67,26 @@
       </div>
 
       <div class="hero-visual">
-        <div class="phone">
-          <img src="screenshots/12-playbuilder.webp" width="540" height="1212" alt="Rink Cast's play builder: the live score, period selector, game clock, and buttons for goal, shot, penalty, save, icing, offside, fight and timeout." />
+        <!-- Promo reel: five screenshots on a 15s CSS loop (timing in promo.css under "Promo reel").
+             Described once for screen readers; the frames and captions themselves are hidden from them. -->
+        <div class="reel" role="img" aria-label="Rink Cast in action: pick your two teams, tap what happened, choose the scorer and assists, the announcement lands in the team chat, and a full recap is sent at the end of the game.">
+          <div class="phone">
+            <div class="reel-screen">
+              <img class="reel-frame" src="screenshots/10-game-setup.webp" width="540" height="1212" alt="" />
+              <img class="reel-frame" src="screenshots/12-playbuilder.webp" width="540" height="1212" alt="" />
+              <img class="reel-frame" src="screenshots/13-goal-with-assists.webp" width="540" height="1212" alt="" />
+              <img class="reel-frame" src="screenshots/21-whatsapp-feed.webp" width="540" height="1212" alt="" />
+              <img class="reel-frame" src="screenshots/20-final-summary.webp" width="540" height="740" alt="" />
+            </div>
+          </div>
+          <ol class="reel-captions" aria-hidden="true">
+            <li>Pick your two teams</li>
+            <li>Tap what happened</li>
+            <li>Scorer, assists, done</li>
+            <li>Everyone knows instantly</li>
+            <li>Full recap when the horn goes</li>
+          </ol>
+          <div class="reel-pips" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span></div>
         </div>
       </div>
     </div>
