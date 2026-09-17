@@ -576,6 +576,129 @@ h2 {
 
 .cta .store-row { justify-content: center; }
 
+/* Manual (manual.html) — documentation-style layout, distinct from the marketing sections above */
+
+.doc-header { padding-block: 8px 8px; }
+
+.doc-title { font-size: clamp(30px, 5vw, 44px); margin: 8px 0 12px; }
+
+.doc-lead { color: var(--text-muted); font-size: 17px; max-width: 60ch; margin: 0; }
+
+.toc {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 24px 28px;
+  margin: 32px 0 8px;
+}
+
+.toc h2 { font-size: 15px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--text-muted); margin: 0 0 14px; }
+
+.toc ol { columns: 2; column-gap: 32px; margin: 0; padding: 0 0 0 22px; }
+
+.toc li { margin-bottom: 8px; break-inside: avoid; }
+
+.toc a { color: var(--text); text-decoration: none; }
+
+.toc a:hover { color: var(--accent); }
+
+.doc-section { padding-block: 48px; border-top: 1px solid var(--border); scroll-margin-top: 24px; }
+
+.doc-section:first-of-type { border-top: none; }
+
+.doc-section h2 { font-size: clamp(24px, 3vw, 30px); margin: 0 0 6px; }
+
+.doc-number { color: var(--accent); font-weight: 700; margin-right: 10px; }
+
+.doc-back { display: inline-block; font-size: 13px; color: var(--text-muted); text-decoration: none; margin-bottom: 8px; }
+
+.doc-back:hover { color: var(--accent); }
+
+.doc-body { display: flex; gap: 40px; align-items: flex-start; margin-top: 20px; }
+
+.doc-body.doc-body--reverse { flex-direction: row-reverse; }
+
+.doc-text { flex: 1.3; min-width: 0; }
+
+.doc-text p { color: var(--text-muted); font-size: 16px; margin: 0 0 16px; }
+
+.doc-text p:last-child { margin-bottom: 0; }
+
+.doc-text strong { color: var(--text); }
+
+.doc-callout {
+  border: 1px solid var(--accent);
+  background: var(--surface);
+  border-radius: var(--radius);
+  padding: 16px 20px;
+  margin: 4px 0 16px;
+}
+
+.doc-callout p { color: var(--text); margin: 0; }
+
+.doc-callout p + p { margin-top: 10px; }
+
+.doc-shots { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 16px; }
+
+.doc-shots.doc-shots--row { flex-direction: row; flex-wrap: wrap; }
+
+.doc-shot {
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  overflow: hidden;
+  background: var(--surface);
+}
+
+.doc-shot img { border-radius: 0; }
+
+.doc-shot figcaption {
+  padding: 10px 14px;
+  font-size: 12px;
+  color: var(--text-muted);
+  border-top: 1px solid var(--border);
+}
+
+.doc-shot--wide { max-width: 340px; margin-inline: auto; }
+
+.doc-shot--landscape { max-width: 100%; }
+
+.doc-steps { list-style: none; margin: 0; padding: 0; }
+
+.doc-steps li {
+  position: relative;
+  padding-left: 34px;
+  margin-bottom: 14px;
+  color: var(--text-muted);
+  font-size: 16px;
+}
+
+.doc-steps li strong { color: var(--text); }
+
+.doc-steps li::before {
+  content: counter(step);
+  counter-increment: step;
+  position: absolute;
+  left: 0;
+  top: -1px;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--accent);
+  color: var(--on-accent);
+  font-size: 12px;
+  font-weight: 700;
+  display: grid;
+  place-items: center;
+}
+
+.doc-steps { counter-reset: step; }
+
+.doc-faq dt { color: var(--text); font-weight: 700; font-size: 16px; margin-top: 20px; }
+
+.doc-faq dt:first-child { margin-top: 0; }
+
+.doc-faq dd { color: var(--text-muted); font-size: 15px; margin: 6px 0 0; }
+
 /* Footer */
 
 .site-footer {
@@ -600,6 +723,15 @@ h2 {
 @media (max-width: 860px) {
   .hero,
   .split { grid-template-columns: 1fr; gap: 40px; }
+
+  .toc ol { columns: 1; }
+
+  .doc-body,
+  .doc-body.doc-body--reverse { flex-direction: column; gap: 20px; }
+
+  .doc-shots.doc-shots--row { flex-direction: column; }
+
+  .doc-shot--wide { max-width: 280px; }
 
   .hero { padding-block: 16px 56px; text-align: center; }
 
