@@ -181,10 +181,12 @@ h1 .accent { color: var(--accent); }
 }
 
 /* Promo reel
-   Five beats of 3s each on a 15s loop. Every frame, caption and pip runs the same
-   keyframes, offset by 3s per position — change --reel-beat and the delays together. */
+   Five beats over an 18s loop. Beat 2 runs longer (6s) because it scrolls the full-length
+   play builder capture, so each beat carries its own explicit keyframes rather than sharing
+   one set with staggered delays. Generated from beats = [3, 6, 3, 3, 3].
+   Frames, captions and pips all run on the same 18s timeline. */
 
-.reel { --reel-beat: 3s; --reel-loop: calc(var(--reel-beat) * 5); position: relative; }
+.reel { --reel-loop: 18s; position: relative; }
 
 .reel-screen {
   position: relative;
@@ -204,7 +206,16 @@ h1 .accent { color: var(--accent); }
   object-position: top;
   border-radius: 0;
   opacity: 0;
-  animation: reel-frame var(--reel-loop) infinite backwards;
+  animation-duration: var(--reel-loop);
+  animation-iteration-count: infinite;
+  animation-fill-mode: backwards;
+}
+
+/* The full-length capture keeps its natural height and slides up inside the frame. */
+.reel-frame--scroll {
+  inset: 0 0 auto 0;
+  height: auto;
+  object-fit: fill;
 }
 
 .reel-captions {
@@ -223,7 +234,9 @@ h1 .accent { color: var(--accent); }
   position: absolute;
   inset: 0;
   opacity: 0;
-  animation: reel-caption var(--reel-loop) infinite backwards;
+  animation-duration: var(--reel-loop);
+  animation-iteration-count: infinite;
+  animation-fill-mode: backwards;
 }
 
 .reel-pips { display: flex; justify-content: center; gap: 8px; }
@@ -233,45 +246,168 @@ h1 .accent { color: var(--accent); }
   height: 8px;
   border-radius: 999px;
   background: var(--border);
-  animation: reel-pip var(--reel-loop) infinite backwards;
+  animation-duration: var(--reel-loop);
+  animation-iteration-count: infinite;
+  animation-fill-mode: backwards;
 }
-
-.reel-frame:nth-child(2), .reel-captions li:nth-child(2), .reel-pips span:nth-child(2) { animation-delay: calc(var(--reel-beat) * 1); }
-.reel-frame:nth-child(3), .reel-captions li:nth-child(3), .reel-pips span:nth-child(3) { animation-delay: calc(var(--reel-beat) * 2); }
-.reel-frame:nth-child(4), .reel-captions li:nth-child(4), .reel-pips span:nth-child(4) { animation-delay: calc(var(--reel-beat) * 3); }
-.reel-frame:nth-child(5), .reel-captions li:nth-child(5), .reel-pips span:nth-child(5) { animation-delay: calc(var(--reel-beat) * 4); }
 
 /* Hovering pauses it, so a frame can actually be read. */
 .reel:hover .reel-frame,
 .reel:hover .reel-captions li,
 .reel:hover .reel-pips span { animation-play-state: paused; }
 
-/* Each beat owns 20% of the loop; the fade-out overlaps the next beat's fade-in. */
-@keyframes reel-frame {
-  0% { opacity: 0; }
-  2% { opacity: 1; }
-  20% { opacity: 1; }
-  23% { opacity: 0; }
-  100% { opacity: 0; }
+.reel-frame:nth-child(1) { animation-name: reel-frame-1; }
+.reel-captions li:nth-child(1) { animation-name: reel-caption-1; }
+.reel-pips span:nth-child(1) { animation-name: reel-pip-1; }
+.reel-frame:nth-child(2) { animation-name: reel-frame-2, reel-scroll; }
+.reel-captions li:nth-child(2) { animation-name: reel-caption-2; }
+.reel-pips span:nth-child(2) { animation-name: reel-pip-2; }
+.reel-frame:nth-child(3) { animation-name: reel-frame-3; }
+.reel-captions li:nth-child(3) { animation-name: reel-caption-3; }
+.reel-pips span:nth-child(3) { animation-name: reel-pip-3; }
+.reel-frame:nth-child(4) { animation-name: reel-frame-4; }
+.reel-captions li:nth-child(4) { animation-name: reel-caption-4; }
+.reel-pips span:nth-child(4) { animation-name: reel-pip-4; }
+.reel-frame:nth-child(5) { animation-name: reel-frame-5; }
+.reel-captions li:nth-child(5) { animation-name: reel-caption-5; }
+.reel-pips span:nth-child(5) { animation-name: reel-pip-5; }
+
+@keyframes reel-frame-1 {
+  0% { opacity: 1 }
+  16.667% { opacity: 1 }
+  19.167% { opacity: 0 }
+  98.333% { opacity: 0 }
+  100% { opacity: 1 }
 }
 
-@keyframes reel-caption {
-  0% { opacity: 0; transform: translateY(10px); }
-  3% { opacity: 1; transform: translateY(0); }
-  18% { opacity: 1; transform: translateY(0); }
-  20% { opacity: 0; transform: translateY(-6px); }
-  100% { opacity: 0; transform: translateY(-6px); }
+@keyframes reel-caption-1 {
+  0% { opacity: 1; transform: translateY(0) }
+  16.667% { opacity: 1; transform: translateY(0) }
+  19.167% { opacity: 0; transform: translateY(-6px) }
+  98.333% { opacity: 0; transform: translateY(10px) }
+  100% { opacity: 1; transform: translateY(0) }
 }
 
-@keyframes reel-pip {
-  0% { width: 8px; background: var(--border); }
-  2% { width: 24px; background: var(--accent); }
-  20% { width: 24px; background: var(--accent); }
-  22% { width: 8px; background: var(--border); }
-  100% { width: 8px; background: var(--border); }
+@keyframes reel-pip-1 {
+  0% { width: 24px; background: var(--accent) }
+  16.667% { width: 24px; background: var(--accent) }
+  19.167% { width: 8px; background: var(--border) }
+  98.333% { width: 8px; background: var(--border) }
+  100% { width: 24px; background: var(--accent) }
 }
 
-/* No motion: freeze on the first beat. */
+@keyframes reel-frame-2 {
+  0% { opacity: 0 }
+  16.667% { opacity: 0 }
+  18.333% { opacity: 1 }
+  50.0% { opacity: 1 }
+  52.5% { opacity: 0 }
+  100% { opacity: 0 }
+}
+
+@keyframes reel-caption-2 {
+  0% { opacity: 0; transform: translateY(10px) }
+  16.667% { opacity: 0; transform: translateY(10px) }
+  18.333% { opacity: 1; transform: translateY(0) }
+  50.0% { opacity: 1; transform: translateY(0) }
+  52.5% { opacity: 0; transform: translateY(-6px) }
+  100% { opacity: 0; transform: translateY(-6px) }
+}
+
+@keyframes reel-pip-2 {
+  0% { width: 8px; background: var(--border) }
+  16.667% { width: 8px; background: var(--border) }
+  18.333% { width: 24px; background: var(--accent) }
+  50.0% { width: 24px; background: var(--accent) }
+  52.5% { width: 8px; background: var(--border) }
+  100% { width: 8px; background: var(--border) }
+}
+
+@keyframes reel-frame-3 {
+  0% { opacity: 0 }
+  50.0% { opacity: 0 }
+  51.667% { opacity: 1 }
+  66.667% { opacity: 1 }
+  69.167% { opacity: 0 }
+  100% { opacity: 0 }
+}
+
+@keyframes reel-caption-3 {
+  0% { opacity: 0; transform: translateY(10px) }
+  50.0% { opacity: 0; transform: translateY(10px) }
+  51.667% { opacity: 1; transform: translateY(0) }
+  66.667% { opacity: 1; transform: translateY(0) }
+  69.167% { opacity: 0; transform: translateY(-6px) }
+  100% { opacity: 0; transform: translateY(-6px) }
+}
+
+@keyframes reel-pip-3 {
+  0% { width: 8px; background: var(--border) }
+  50.0% { width: 8px; background: var(--border) }
+  51.667% { width: 24px; background: var(--accent) }
+  66.667% { width: 24px; background: var(--accent) }
+  69.167% { width: 8px; background: var(--border) }
+  100% { width: 8px; background: var(--border) }
+}
+
+@keyframes reel-frame-4 {
+  0% { opacity: 0 }
+  66.667% { opacity: 0 }
+  68.333% { opacity: 1 }
+  83.333% { opacity: 1 }
+  85.833% { opacity: 0 }
+  100% { opacity: 0 }
+}
+
+@keyframes reel-caption-4 {
+  0% { opacity: 0; transform: translateY(10px) }
+  66.667% { opacity: 0; transform: translateY(10px) }
+  68.333% { opacity: 1; transform: translateY(0) }
+  83.333% { opacity: 1; transform: translateY(0) }
+  85.833% { opacity: 0; transform: translateY(-6px) }
+  100% { opacity: 0; transform: translateY(-6px) }
+}
+
+@keyframes reel-pip-4 {
+  0% { width: 8px; background: var(--border) }
+  66.667% { width: 8px; background: var(--border) }
+  68.333% { width: 24px; background: var(--accent) }
+  83.333% { width: 24px; background: var(--accent) }
+  85.833% { width: 8px; background: var(--border) }
+  100% { width: 8px; background: var(--border) }
+}
+
+@keyframes reel-frame-5 {
+  0% { opacity: 0 }
+  83.333% { opacity: 0 }
+  85.0% { opacity: 1 }
+  100% { opacity: 1 }
+}
+
+@keyframes reel-caption-5 {
+  0% { opacity: 0; transform: translateY(10px) }
+  83.333% { opacity: 0; transform: translateY(10px) }
+  85.0% { opacity: 1; transform: translateY(0) }
+  100% { opacity: 1; transform: translateY(0) }
+}
+
+@keyframes reel-pip-5 {
+  0% { width: 8px; background: var(--border) }
+  83.333% { width: 8px; background: var(--border) }
+  85.0% { width: 24px; background: var(--accent) }
+  100% { width: 24px; background: var(--accent) }
+}
+
+@keyframes reel-scroll {
+  0% { transform: translateY(0); }
+  20.0% { transform: translateY(0); }
+  46.667% { transform: translateY(-41.194%); }
+  52.5% { transform: translateY(-41.194%); }
+  53.056% { transform: translateY(0); }
+  100% { transform: translateY(0); }
+}
+
+/* No motion: freeze on the first beat, with the capture at the top of the page. */
 @media (prefers-reduced-motion: reduce) {
   .reel-frame,
   .reel-captions li,
@@ -279,6 +415,8 @@ h1 .accent { color: var(--accent); }
 
   .reel-frame:first-child,
   .reel-captions li:first-child { opacity: 1; transform: none; }
+
+  .reel-frame--scroll { transform: translateY(0); }
 
   .reel-pips span:first-child { width: 24px; background: var(--accent); }
 }
