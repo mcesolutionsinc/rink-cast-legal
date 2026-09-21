@@ -40,8 +40,8 @@
     <div class="doc-header">
       <h1 class="doc-title">Rink Cast Manual</h1>
       <p class="doc-lead">Everything Rink Cast does, in the order you'll actually use it — from building your first
-        roster to sending the final recap. This covers Android; an iPhone version is coming once Rink Cast is on
-        the App Store.</p>
+        roster to sending the final recap. Covers both Android and iPhone — the steps are the same throughout,
+        with a 📱 note wherever something actually differs.</p>
     </div>
 
     <nav class="toc" aria-label="Table of contents">
@@ -71,13 +71,18 @@
           <p><strong>There's no account and no login.</strong> Rink Cast doesn't ask you to sign up or sign in —
             install it, and you're using it.</p>
           <p>Every new install starts with a <strong>free 30-day trial</strong>. After that, it continues as a paid
-            subscription — $2.99/month or $19.99/year — billed through the Google Play Store, the same as any other
-            subscription app.</p>
+            subscription — $2.99/month or $19.99/year — billed the same as any other subscription app: through the
+            Google Play Store on Android, or the App Store on iPhone.</p>
           <p><strong>Restoring on a new phone:</strong> if you've subscribed before, tap <strong>Restore
             Purchases</strong> on the subscription screen to pick it back up on a new device, no new payment
             required.</p>
-          <p><strong>Cancelling</strong> happens through the Google Play Store, not inside Rink Cast — open the Play
-            Store app, go to Subscriptions, and cancel from there.</p>
+          <div class="doc-callout">
+            <p><strong>🤖 On Android</strong>, cancelling happens through the Google Play Store, not inside Rink
+              Cast — open the Play Store app, go to Subscriptions, and cancel from there.</p>
+            <p><strong>📱 On iPhone</strong>, cancelling happens through Settings, not inside Rink Cast — open
+              Settings, tap your name at the top, then <strong>Subscriptions</strong>, and cancel Rink Cast from
+              there.</p>
+          </div>
           <p>If you ever need help with your subscription, open <strong>Settings</strong> and tap your
             <strong>Support ID</strong> to copy it — that's how support identifies your subscription without needing
             your name or email.</p>
@@ -148,6 +153,12 @@
             <li><strong>Overwrite</strong> — replace your existing team with the imported one</li>
             <li><strong>Copy</strong> — keep both, adding the imported one under a new name</li>
           </ul>
+          <div class="doc-callout">
+            <p><strong>📱 On iPhone</strong>, both <strong>Export Selected</strong> and <strong>Download to
+              Device</strong> hand off to the Files app rather than Android's Download folder — pick <strong>On My
+              iPhone</strong> to keep the file local, or iCloud Drive to sync it. Importing works the same way in
+              reverse: the import icon opens the same Files picker to choose a file from.</p>
+          </div>
         </div>
         <div class="doc-shots doc-shots--row">
           <figure class="doc-shot doc-shot--wide">
@@ -391,13 +402,28 @@
           <p>Messages carry their own period and game-clock time, so even if a few arrive in a burst after a spell
             with no signal (see <a href="#at-the-rink">Using it at the rink</a>), the story still reads in the right
             order.</p>
+          <p>The iPhone screenshots use Messages since it's always available for a screenshot — in practice it
+            works exactly the same in WhatsApp, or whatever you actually send to (see
+            <a href="#where-it-sends">Where announcements get sent</a>).</p>
         </div>
         <div class="doc-shots">
           <figure class="doc-shot doc-shot--wide">
             <img src="screenshots/manual/21-whatsapp-feed.webp" width="640" height="1859" loading="lazy"
               alt="A full game's worth of Rink Cast announcements in a group chat, from game time through the final recap." />
-            <figcaption>A complete game, start to finish</figcaption>
+            <figcaption>A complete game, start to finish — Android (WhatsApp)</figcaption>
           </figure>
+          <div class="doc-shots doc-shots--row">
+            <figure class="doc-shot doc-shot--wide">
+              <img src="screenshots/manual/21-whatsapp-feed-ios.webp" width="640" height="1391" loading="lazy"
+                alt="The start of a game's worth of Rink Cast announcements in Messages on iPhone: game time, first goal, an icing call." />
+              <figcaption>iPhone (Messages) — start</figcaption>
+            </figure>
+            <figure class="doc-shot doc-shot--wide">
+              <img src="screenshots/manual/21b-whatsapp-feed-scroll-ios.webp" width="640" height="1391" loading="lazy"
+                alt="The same Messages thread on iPhone scrolled further, through each period ending to the final recap." />
+              <figcaption>iPhone (Messages) — through to final</figcaption>
+            </figure>
+          </div>
         </div>
       </div>
     </section>
@@ -416,11 +442,16 @@
               you're sure.</p>
           </div>
         </div>
-        <div class="doc-shots">
+        <div class="doc-shots doc-shots--row">
           <figure class="doc-shot doc-shot--wide">
             <img src="screenshots/manual/22-resume-prompt.webp" width="640" height="1353" loading="lazy"
-              alt="Resume Game? prompt offering Delete or Resume for a game in progress." />
-            <figcaption>The resume prompt</figcaption>
+              alt="Resume Game? prompt offering Delete or Resume for a game in progress, Android." />
+            <figcaption>Android</figcaption>
+          </figure>
+          <figure class="doc-shot doc-shot--wide">
+            <img src="screenshots/manual/22-resume-prompt-ios.webp" width="640" height="1391" loading="lazy"
+              alt="Resume Game? prompt offering Delete or Resume for a game in progress, iPhone." />
+            <figcaption>iPhone</figcaption>
           </figure>
         </div>
       </div>
@@ -439,7 +470,7 @@
             phone reconnects. Followers may get a burst of messages at once rather than live updates, but nothing is
             lost, and every message already has its period and time on it so the order still makes sense.</p>
           <p>Starting a trial, subscribing, or restoring a purchase on a new phone does need a connection — those go
-            through the Play Store.</p>
+            through the Play Store or App Store.</p>
         </div>
         <div class="doc-shots">
           <figure class="doc-shot doc-shot--wide doc-shot--landscape">
@@ -457,11 +488,17 @@
       <div class="doc-body">
         <div class="doc-text">
           <dl class="doc-faq">
-            <dt>Download to Device didn't seem to do anything.</dt>
+            <dt>Download to Device didn't seem to do anything. <em>(Android)</em></dt>
             <dd>This usually means Rink Cast lost permission to write to the folder you'd previously chosen — often
               after moving files around, or on a fresh install. Try again and pick the destination folder once
               more when prompted; that re-grants access. <strong>Export Selected</strong> (the share option) is a
               reliable fallback if the problem persists.</dd>
+
+            <dt>Download to Device didn't seem to do anything. <em>(iPhone)</em></dt>
+            <dd>Check the Files app in the location you picked — <strong>On My iPhone</strong> or iCloud Drive —
+              the file's usually there even if nothing visibly happened on screen. If iCloud Drive was the target
+              and you're offline, the file may not finish syncing until you're back online. <strong>Export
+              Selected</strong> (the share option) is a reliable fallback if it's still not showing up.</dd>
 
             <dt>A team shows "⚠ no roster."</dt>
             <dd>That team has no players yet. Open it from Manage Teams and add at least one before using it in a
@@ -472,8 +509,9 @@
               support. It identifies your subscription without needing your name, email, or any account.</dd>
 
             <dt>I switched phones — how do I get my subscription back?</dt>
-            <dd>Install Rink Cast and tap <strong>Restore Purchases</strong> on the subscription screen. This
-              needs a connection and works from the same Google account you subscribed with.</dd>
+            <dd>Install Rink Cast and tap <strong>Restore Purchases</strong> on the subscription screen. This needs
+              a connection, and works from the same account you subscribed with — your Google account on Android,
+              or the Apple ID signed into the App Store on iPhone.</dd>
 
             <dt>Can I move my teams to a new phone?</dt>
             <dd>Yes — export them on the old phone, transfer the file however you like (email, cloud storage, a

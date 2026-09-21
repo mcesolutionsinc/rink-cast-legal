@@ -46,10 +46,10 @@
 
         <!--
           STORE LINKS — the only place they live on this page.
-          Google Play: the listing isn't live yet, so this is a disabled button.
-            When it is, replace the <span> below with:
+          Neither listing is live yet, so both render as disabled "Coming soon" buttons.
+          Once a listing goes live, replace its <span> with an <a>, e.g.:
             <a class="store-btn" href="https://play.google.com/store/apps/details?id=com.mcesolutionsinc.rinkcast">…same contents, minus the "Soon" badge…</a>
-          App Store: no iOS app yet. Uncomment the block below once one ships.
+            <a class="store-btn" href="APP_STORE_URL">…same contents, minus the "Soon" badge…</a>
         -->
         <div class="store-row" id="download">
           <span class="store-btn is-disabled" aria-disabled="true">
@@ -57,12 +57,11 @@
             Google Play
             <span class="soon">Coming soon</span>
           </span>
-          <!--
-          <a class="store-btn" href="APP_STORE_URL">
+          <span class="store-btn is-disabled" aria-disabled="true">
             <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.4 12.6c0-2.3 1.9-3.4 2-3.5-1.1-1.6-2.8-1.8-3.4-1.8-1.4-.2-2.8.9-3.5.9-.7 0-1.9-.8-3.1-.8-1.6 0-3.1.9-3.9 2.4-1.7 2.9-.4 7.2 1.2 9.6.8 1.2 1.7 2.4 2.9 2.4 1.2 0 1.6-.8 3-.8 1.4 0 1.8.8 3.1.8 1.3 0 2.1-1.2 2.9-2.3.9-1.3 1.3-2.6 1.3-2.7 0 0-2.5-1-2.5-4.2ZM14.1 5.8c.6-.8 1.1-1.9 1-3-1 0-2.1.7-2.8 1.5-.6.7-1.1 1.8-1 2.9 1.1.1 2.1-.6 2.8-1.4Z"/></svg>
             App Store
-          </a>
-          -->
+            <span class="soon">Coming soon</span>
+          </span>
         </div>
         <p class="price-note">Free for 30 days, then $2.99/month or $19.99/year.</p>
       </div>
@@ -204,7 +203,7 @@
 
     <section class="cta">
       <h2>Ready for puck drop?</h2>
-      <p class="section-intro">Rink Cast is coming to Google Play.</p>
+      <p class="section-intro">Rink Cast is coming to Google Play and the App Store.</p>
       <div class="store-row">
         <a class="store-btn" href="#download">Get Rink Cast</a>
       </div>
