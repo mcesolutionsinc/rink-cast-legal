@@ -137,6 +137,12 @@ h1 .accent { color: var(--accent); }
 
 .store-btn.is-disabled:hover { transform: none; }
 
+/* Official "Get it on Google Play" badge. The artwork carries its own clear-space padding,
+   so negative margins trim it to sit flush with the sibling .store-btn. */
+.play-badge { display: inline-block; margin: -14px -14px -14px -12px; transition: transform 0.15s ease; }
+.play-badge:hover { transform: translateY(-2px); }
+.play-badge img { display: block; height: 84px; width: auto; }
+
 .store-btn .soon {
   font-size: 12px;
   font-weight: 600;
